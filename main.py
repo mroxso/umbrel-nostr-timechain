@@ -8,7 +8,7 @@ from nostr.message_type import ClientMessageType
 from nostr.key import PrivateKey
 
 relay_manager = RelayManager()
-relay_manager.add_relay("wss://relay.damus.io")
+relay_manager.add_relay("ws://umbrel:4848)
 relay_manager.open_connections({"cert_reqs": ssl.CERT_NONE}) # NOTE: This disables ssl certificate verification
 time.sleep(1.25) # allow the connections to open
 
