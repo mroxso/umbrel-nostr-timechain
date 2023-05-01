@@ -22,10 +22,14 @@ try:
 
     old_block_height = 0
     while True:
-        url = "https://blockchain.info/latestblock"
-        response = requests.get(url)
-        data = response.json()
-        block_height = data["height"]
+        url = "http://umbrel:PASSWORD@umbrel.local:8332/"
+        response = requests.post(url, json={
+            "jsonrpc": "1.0",
+            "id": "umbrel-timechain-bot",
+            "method": "getblockchaininfo",
+            "params": []
+        }).json()
+        block_height = response["result"]["blocks"]
 
         if(block_height > old_block_height):
             message = "⚡️ " + str(block_height) + " ⚡️"
